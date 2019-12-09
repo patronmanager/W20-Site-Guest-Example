@@ -1,0 +1,21 @@
+<apex:page id="aaTestPage" controller="aaTestContoller" sideBar="false">
+	
+	Read Object permission: {!testObjectIsReadable}
+	<br/><br/><br/>
+	
+	Test Object<br/>
+	<table>
+		<tr><th>Field Name</th><th>Read Access</th><th>Edit Access</th><th>Permissionable</th></tr>
+		<apex:repeat value="{!testDescribeRslts}" var="rslt">
+			<tr>
+				<td><apex:outputText value="{!rslt.name}" /></td>
+				<td><apex:outputText value="{!rslt.isAccessible}" /></td>
+				<td><apex:outputText value="{!rslt.isUpdateable}" /></td>
+				<td><apex:outputText value="{!rslt.permissionable}" /></td>
+			</tr>
+		</apex:repeat>
+	</table>
+	<br/><br/>
+	<apex:outputLabel value="{!$ObjectType.aaTest__c.fields.TestField__c.accessible}" />
+
+</apex:page>
