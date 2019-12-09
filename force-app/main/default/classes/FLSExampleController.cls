@@ -1,4 +1,4 @@
-public with sharing class aaTestContoller {
+public with sharing class FLSExampleController {
 	
 	public List<DescribeRslt> getTestDescribeRslts(){
 		List<DescribeRslt> drList = new List<DescribeRslt>();
@@ -15,7 +15,7 @@ public with sharing class aaTestContoller {
 		return aaTest__c.SObjectType.getDescribe().isAccessible();
 	}
 	
-	public aaTestContoller() {}
+	public FLSExampleController() {}
 	
 	public class DescribeRslt {
 		public String name {get; private set;}

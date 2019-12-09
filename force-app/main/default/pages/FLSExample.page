@@ -1,4 +1,4 @@
-<apex:page id="aaTestPage" controller="aaTestContoller" sideBar="false">
+<apex:page controller="FLSExampleController" sideBar="false">
 	
 	Read Object permission: {!testObjectIsReadable}
 	<br/><br/><br/>

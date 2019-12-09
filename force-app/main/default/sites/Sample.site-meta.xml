@@ -13,19 +13,15 @@
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <cspUpgradeInsecureRequests>true</cspUpgradeInsecureRequests>
-    <enableAuraRequests>true</enableAuraRequests>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
     <genericErrorPage>Exception</genericErrorPage>
     <inMaintenancePage>InMaintenance</inMaintenancePage>
     <inactiveIndexPage>InMaintenance</inactiveIndexPage>
-    <indexPage>aaTestPage</indexPage>
-    <masterLabel>PMGR-8910</masterLabel>
+    <indexPage>FLSExample</indexPage>
+    <masterLabel>FLS Example</masterLabel>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <requireHttps>true</requireHttps>
-    <requireInsecurePortalAccess>false</requireInsecurePortalAccess>
-    <siteAdmin>test-yvzxdj25zomc@example.com</siteAdmin>
     <siteTemplate>SiteTemplate</siteTemplate>
     <siteType>Visualforce</siteType>
-    <subdomain>pmgr-8910-developer-edition</subdomain>
-    <urlPathPrefix>pmgr8910</urlPathPrefix>
+    <urlPathPrefix>sample</urlPathPrefix>
 </CustomSite>

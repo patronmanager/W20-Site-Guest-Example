@@ -22,7 +22,7 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <pageAccesses>
-        <apexPage>aaTestPage</apexPage>
+        <apexPage>FLSExample</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
 </PermissionSet>
