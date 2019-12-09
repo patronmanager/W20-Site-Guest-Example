@@ -6,6 +6,12 @@ sfdx force:org:create -f config/project-scratch-def.json --setdefaultusername
 sfdx force:source:push
 ```
 
+## Assign the Perm Set to the Guest User
+
+```
+sfdx force:apex:execute -f apex/guest.user.permset.apex
+```
+
 ## Load the VF page
 
 ```
