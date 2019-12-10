@@ -1,5 +1,6 @@
-public with sharing class FLSExampleController {
-	
+public without sharing class FLSExampleController {
+	public aaTest__c myRecord{get;set;}
+
 	public List<DescribeRslt> getTestDescribeRslts(){
 		List<DescribeRslt> drList = new List<DescribeRslt>();
 		Schema.DescribeSObjectResult soResult = aaTest__c.SObjectType.getDescribe();
@@ -15,7 +16,22 @@ public with sharing class FLSExampleController {
 		return aaTest__c.SObjectType.getDescribe().isAccessible();
 	}
 	
-	public FLSExampleController() {}
+	public PageReference populateDatabase() {
+		//Ensure a single record exists for demonstrating Edit behavior
+		try {
+			myRecord = [SELECT Id, TestField__c FROM aaTest__c LIMIT 1];
+		}
+		catch(QueryException qe){
+			if(qe.getMessage().contains('List has no rows')){
+				myRecord = new aaTest__c(TestField__c = 'Hello World');
+				insert myRecord;
+			}
+			else{
+				throw qe;
+			}
+		}
+		return null;
+	}
 	
 	public class DescribeRslt {
 		public String name {get; private set;}
