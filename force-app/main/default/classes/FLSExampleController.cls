@@ -32,6 +32,17 @@ public without sharing class FLSExampleController {
 		}
 		return null;
 	}
+
+    public PageReference sendEmail(){
+        EmailTemplate template = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'SiteSampleVFTemplate'];
+        Contact c = [SELECT Id FROM Contact WHERE LastName = 'Doe'];
+        Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+        email.setTemplateId(template.Id);
+        email.setTargetObjectId(c.Id);
+        Messaging.sendEmail(new Messaging.SingleEmailMessage[]{email});
+        ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, 'Email sent!'));
+        return null;
+    }
 	
 	public class DescribeRslt {
 		public String name {get; private set;}
