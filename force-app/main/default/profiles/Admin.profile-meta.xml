@@ -9,6 +9,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FLSExampleController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ForgotPasswordController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -60,6 +64,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>aaTest__c.Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>aaTest__c.TestField__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -101,6 +110,10 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>Exception</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>FLSExample</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -153,10 +166,6 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>UnderConstruction</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
-    <pageAccesses>
-        <apexPage>FLSExample</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <userLicense>Salesforce</userLicense>
