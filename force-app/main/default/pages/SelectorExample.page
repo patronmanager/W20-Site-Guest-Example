@@ -1,0 +1,20 @@
+<apex:page id="SelectorExample" controller="SelectorExampleController" sideBar="false">
+	
+	<table>
+		<tr><th>Method</th><th>Id</th><th>TestField<br/>(Read and Edit Access checked)</th><th>Text2<br/>(Read Access checked)</th><th>Text3<br/>(neither checked)</th></tr>
+		<tr>
+			<td>via Selector</td>
+			<td><apex:outputText value="{!viaSelector.Id}" /></td>
+			<td><apex:outputText value="{!viaSelector.TestField__c}" /></td>
+			<td><apex:outputText value="{!viaSelector.Text2__c}" /></td>
+			<td><apex:outputText value="{!viaSelector.Text3__c}" /></td>
+		</tr>
+		<tr>
+			<td>via Without Sharing Proxy</td>
+			<td><apex:outputText value="{!viaProxy.Id}" /></td>
+			<td><apex:outputText value="{!viaProxy.TestField__c}" /></td>
+			<td><apex:outputText value="{!viaProxy.Text2__c}" /></td>
+			<td><apex:outputText value="{!viaProxy.Text3__c}" /></td>
+		</tr>
+	</table>
+</apex:page>

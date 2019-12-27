@@ -98,8 +98,35 @@ public without sharing class Test_InsertRecord {
 		}
 	}
 	
+	@IsTest
+	static void InsertObject_When_SiteGuestUser_Expect_Failure() {
+		// This fails because the insert of this object is outside the 'runAs'
+		aaTest__c aaTest = new aaTest__c(Name = 'aaTest Local');
+		insert aaTest;
+		
+		try {
+			System.runAs(getSiteGuestUser()) {
+				InsertRecord.objectWithLookup(aaTest);
+			}
+			System.assert(false, 'Expected failure but got success');
+		}catch (System.DmlException dmlEx) {
+			System.assert(dmlEx.getMessage().containsIgnoreCase('INSUFFICIENT_ACCESS_ON_CROSS_REFERENCE_ENTITY'));
+		}
+	}
+	
+	@IsTest
+	static void InsertObject_When_RunThroughPoxy_Expect_Success() {
+		// Sending this through a proxy that has without sharing works
+		aaTest__c aaTest = new aaTest__c(Name = 'aaTest Local');
+		insert aaTest;
+		
+		System.runAs(getSiteGuestUser()) {
+			WithOutSharingProxy.objectWithLookup(aaTest);
+		}
+	}
+	
 	public static User getSiteGuestUser(){
-		Site theSite = [SELECT GuestUserId FROM Site WHERE Name='PMGR_8910' AND Status='Active' LIMIT 1];
+		Site theSite = [SELECT GuestUserId FROM Site WHERE Name='Sample' AND Status='Active' LIMIT 1];
 		return [SELECT Id, TimeZoneSidKey FROM User WHERE Id = :theSite.GuestUserId];
 	}
 }
