@@ -12,4 +12,17 @@ public without sharing class WithOutSharingProxy {
 		return new Selector_aaTest().selectById(new Set<Id>{aaTestId});
 	}
 	
+	public static List<Contact> getContactsWithSharing(){
+		return new OverrideClass().getContactsWithSharing();
+	}
+	public static List<Contact> getContactsInheritedSharing(){
+		return new OverrideClass().getContactsInhertedSharing();
+	}
+	public static List<Contact> getContactsDelegateSharing(){
+		return new OverrideClass().getContactsDelegateSharing();
+	}
+	public static List<Contact> getContactsWithoutSharing(){
+		return [SELECT Id, FirstName, LastName, Email FROM Contact];
+	}
+	
 }

@@ -1,4 +1,4 @@
-public with sharing class SelectorExampleController {
+public without sharing class SelectorExampleController {
 	
 	String objectId = 'a00S0000007lAaPIAU';
 	
@@ -16,6 +16,35 @@ public with sharing class SelectorExampleController {
 			return null;
 		}
 		return aaList[0];
+	}
+	
+	public Contact getContactsWithSharing(){
+		List<Contact> a = WithOutSharingProxy.getContactsWithSharing();
+		if(a.isEmpty()){
+			return new Contact(FirstName = 'NOT FOUND');
+		}
+		return a[0];
+	}
+	public Contact getContactsInheritedSharing(){
+		List<Contact> a = WithOutSharingProxy.getContactsInheritedSharing();
+		if(a.isEmpty()){
+			return new Contact(FirstName = 'NOT FOUND');
+		}
+		return a[0];
+	}
+	public Contact getContactsDelegateSharing(){
+		List<Contact> a = WithOutSharingProxy.getContactsDelegateSharing();
+		if(a.isEmpty()){
+			return new Contact(FirstName = 'NOT FOUND');
+		}
+		return a[0];
+	}
+	public Contact getContactsWithoutSharing(){
+		List<Contact> a = WithOutSharingProxy.getContactsWithoutSharing();
+		if(a.isEmpty()){
+			return new Contact(FirstName = 'NOT FOUND');
+		}
+		return a[0];
 	}
 	
 	public SelectorExampleController() {}

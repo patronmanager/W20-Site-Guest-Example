@@ -17,4 +17,17 @@
 			<td><apex:outputText value="{!viaProxy.Text3__c}" /></td>
 		</tr>
 	</table>
+	Hello these are our new tables!
+	<br/>
+	<br/>
+	WithSharing Contact: {!contactsWithSharing.FirstName}
+	<br/>
+	<br/>
+	InheritedSharing Contact: {!contactsInheritedSharing.FirstName}
+	<br/>
+	<br/>
+	DelegateSharing Contact: {!contactsDelegateSharing.FirstName}
+	<br/>
+	<br/>
+	WithoutSharing Contact: {!contactsWithoutSharing.FirstName}
 </apex:page>
