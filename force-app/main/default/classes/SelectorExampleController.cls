@@ -46,7 +46,22 @@ public without sharing class SelectorExampleController {
 		}
 		return a[0];
 	}
-	
+
+	public Contact getContactsAbstractly(){
+		List<Contact> a = WithOutSharingProxy.getContactsAbstractly();
+		if(a.isEmpty()){
+			return new Contact(FirstName = 'NOT FOUND');
+		}
+		return a[0];
+	}
+	public Contact getContactsUsingAbstractImplementation(){
+		List<Contact> a = WithOutSharingProxy.getContactsUsingAbstractImplementation();
+		if(a.isEmpty()){
+			return new Contact(FirstName = 'NOT FOUND');
+		}
+		return a[0];
+	}
+
 	public SelectorExampleController() {}
 	
 }

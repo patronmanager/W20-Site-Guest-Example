@@ -21,6 +21,12 @@ public without sharing class WithOutSharingProxy {
 	public static List<Contact> getContactsDelegateSharing(){
 		return new OverrideClass().getContactsDelegateSharing();
 	}
+	public static List<Contact> getContactsUsingAbstractImplementation(){
+		return new OverrideClass().getContactsUsingAbstractImplementation();
+	}
+	public static List<Contact> getContactsAbstractly(){
+		return new OverrideClass().getContactsAbstractly();
+	}
 	public static List<Contact> getContactsWithoutSharing(){
 		return [SELECT Id, FirstName, LastName, Email FROM Contact];
 	}
