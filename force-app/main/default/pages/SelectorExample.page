@@ -30,4 +30,10 @@
 	<br/>
 	<br/>
 	WithoutSharing Contact: {!contactsWithoutSharing.FirstName}
+	<br/>
+	<br/>
+	Abstract Contact: {!contactsAbstractly.FirstName}
+	<br/>
+	<br/>
+	Using Abstract Implementation Contact: {!contactsUsingAbstractImplementation.FirstName}
 </apex:page>
