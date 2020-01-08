@@ -1,5 +1,7 @@
 <apex:page controller="FLSExampleController" sideBar="false" action="{!populateDatabase}">
 	
+	<apex:pageMessages />
+	
 	Read Object permission: {!testObjectIsReadable}
 	<br/><br/><br/>
 	
@@ -21,7 +23,8 @@
 	<apex:form>
 		<p>My InputField: <apex:inputField value="{!myRecord.TestField__c}"/></p>
 		<p>My OutputField for Id {!myRecord.Id}: <apex:outputField value="{!myRecord.TestField__c}"/></p>
-    <apex:commandButton action="{!sendEmail}" value="Send Email"/>
+		<apex:commandButton action="{!sendVFEmail}" value="Send Visual Force Email"/>
+		<apex:commandButton action="{!sendVFRelatedToEmail}" value="Send Visual Force with RelatedTo Email"/>
 	</apex:form>
 
 </apex:page>

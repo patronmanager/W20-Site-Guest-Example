@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Test RelatedTo Template"  relatedToType="aaTest__c">
+<messaging:plainTextEmailBody >
+	Hello,
+	Your TestField value is "{!relatedTo.TestField__c}"
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

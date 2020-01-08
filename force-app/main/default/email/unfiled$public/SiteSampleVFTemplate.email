@@ -2,6 +2,7 @@
 <messaging:plainTextEmailBody >
 Congratulations!
 This is your new Visualforce Email Template.
-{!recipient.FirstName}
+First Name: {!recipient.FirstName}
+Last Name: {!recipient.LastName}
 </messaging:plainTextEmailBody>
 </messaging:emailTemplate>

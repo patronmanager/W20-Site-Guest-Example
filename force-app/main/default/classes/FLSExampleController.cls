@@ -33,16 +33,47 @@ public without sharing class FLSExampleController {
 		return null;
 	}
 
-    public PageReference sendEmail(){
-        EmailTemplate template = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'SiteSampleVFTemplate'];
-        Contact c = [SELECT Id FROM Contact WHERE LastName = 'Doe'];
-        Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-        email.setTemplateId(template.Id);
-        email.setTargetObjectId(c.Id);
-        Messaging.sendEmail(new Messaging.SingleEmailMessage[]{email});
-        ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, 'Email sent!'));
-        return null;
-    }
+	public PageReference sendVFEmail(){
+		Contact con = createContact();
+		try {
+			EmailTemplate template = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'SiteSampleVFTemplate'];
+//			Contact con = [SELECT Id FROM Contact WHERE LastName = 'Smith'];
+			Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+			email.setTemplateId(template.Id);
+			email.setTargetObjectId(con.Id);
+			
+			Messaging.sendEmail(new Messaging.SingleEmailMessage[]{email});
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, 'Email sent!'));
+		} catch (Exception ex ){
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, ex.getMessage()));
+		}
+		
+		delete con;
+		return null;
+	}
+	
+	public PageReference sendVFRelatedToEmail(){
+		Contact con = createContact();
+		aaTest__c aaTest = createAATest();
+		
+		try {
+			EmailTemplate template = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'VFTemplateWithRelatedTo'];
+			Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+			email.setTemplateId(template.Id);
+			email.setTargetObjectId(con.Id);
+			email.setWhatId(aaTest.Id);
+			email.saveAsActivity = false;
+			
+			Messaging.sendEmail(new Messaging.SingleEmailMessage[]{email});
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, 'Email sent!'));
+		} catch (Exception ex ){
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, ex.getMessage()));
+		}
+		
+		delete aaTest;
+		delete con;
+		return null;
+	}
 	
 	public class DescribeRslt {
 		public String name {get; private set;}
@@ -59,4 +90,23 @@ public without sharing class FLSExampleController {
 		}
 	}
 
+	private Contact createContact(){
+		Contact con = new Contact(
+			FirstName = 'Steve',
+			LastName = 'Miller',
+			Email = 'miller@mikeh.patrontechnology.com'
+		);
+		insert con;
+		return con;
+	}
+	
+	private aaTest__c createAATest(){
+		aaTest__c aaTest = new aaTest__c(
+			TestField__c = 'This is a test',
+			Text2__c = 'of the emergency',
+			Text3__c = 'broadcast system'
+		);
+		insert aaTest;
+		return aaTest;
+	}
 }
